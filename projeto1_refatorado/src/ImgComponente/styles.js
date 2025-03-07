@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   image: {
     width: 300,
     height: 300,
-    margin: 30, 
+    margin: 30,
   },
 });
 
