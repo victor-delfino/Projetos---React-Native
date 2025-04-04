@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
 import GerarNumero from '../../pages/GerarNumero';
 
 const GerarNumeroLogica = () => {
-  const [resultado, setResultado] = useState(null);
 
-  function gerarNumero() {
-    setResultado(Math.floor(Math.random() * 101));
-  }
+  const gerarNumero = () => Math.floor(Math.random() * 11);
 
-  return <GerarNumero resultado={resultado} onDiscover={gerarNumero} />;
+  return <GerarNumero onDiscover={gerarNumero} />;
 };
 
 export default GerarNumeroLogica;

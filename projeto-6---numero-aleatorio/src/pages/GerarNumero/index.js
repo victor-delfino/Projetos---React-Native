@@ -1,17 +1,50 @@
-import { View, Text, Button, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Button, Image, TextInput } from 'react-native';
 import styles from './styles';
 
 const img = 'https://images.emojiterra.com/google/android-12l/512px/1f914.png';
 
-const GerarNumero = ({ resultado, onDiscover }) => {
+const GerarNumero = ({ onDiscover }) => {
+  const [palpite, setPalpite] = useState('');
+  const [mensagem, setMensagem] = useState('');
+
+  const verificarPalpite = () => {
+    const numeroGerado = onDiscover();
+    if (parseInt(palpite) === numeroGerado) {
+      setMensagem('Você acertou!');
+    } else {
+      setMensagem(`Errou! O número era ${numeroGerado}`);
+    }
+  };
+
+  const recomeçar = () => {
+    setPalpite('');
+    setMensagem('');
+  };
+
   return (
     <View style={styles.area}>
       <Text style={styles.title}>Número Aleatório</Text>
       <Image source={{ uri: img }} style={styles.image} />
-      <Text style={styles.prompt}>Vou adivinhar que número você está pensando!</Text>
-      <Button title="Descobrir" onPress={onDiscover} color="#007bff" />
-      {resultado !== null && (
-        <Text style={styles.resultText}>{resultado}</Text>
+      <Text style={styles.prompt}>Adivinhe o número de 0 a 10</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Digite seu palpite"
+        keyboardType="numeric"
+        value={palpite}
+        onChangeText={setPalpite}
+      />
+
+      <Button title="Descobrir" onPress={verificarPalpite} color="#007bff" />
+      
+      {mensagem !== '' && (
+        <>
+          <Text style={styles.resultText}>{mensagem}</Text>
+          <View style={{ marginTop: 10 }}>
+            <Button title="Recomeçar" onPress={recomeçar} color="#6c757d" />
+          </View>
+        </>
       )}
     </View>
   );

@@ -27,11 +27,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 15,
   },
+  input: {
+    width: '80%',
+    height: 45,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    fontSize: 16,
+    marginBottom: 15,
+    textAlign: 'center',
+  },
   resultText: {
     fontSize: 22,
     fontWeight: 'bold',
     color: '#007bff',
     marginTop: 10,
+    textAlign: 'center',
   },
 });
 
