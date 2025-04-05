@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import { View, Text, Button, Image, TextInput } from 'react-native';
 import styles from './styles';
 
 const img = 'https://images.emojiterra.com/google/android-12l/512px/1f914.png';
 
-const GerarNumero = ({ onDiscover }) => {
+const GerarNumero = (props) => {
   const [palpite, setPalpite] = useState('');
   const [mensagem, setMensagem] = useState('');
 
   const verificarPalpite = () => {
-    const numeroGerado = onDiscover();
+    const numeroGerado = props.onDiscover(); 
+    
     if (parseInt(palpite) === numeroGerado) {
       setMensagem('Você acertou!');
     } else {
@@ -37,7 +39,7 @@ const GerarNumero = ({ onDiscover }) => {
       />
 
       <Button title="Descobrir" onPress={verificarPalpite} color="#007bff" />
-      
+
       {mensagem !== '' && (
         <>
           <Text style={styles.resultText}>{mensagem}</Text>
